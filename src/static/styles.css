@@ -32,6 +32,34 @@
   --info-light: #d1ecf1;
 }
 
+body.dark-mode {
+  --primary: #3949ab;
+  --primary-light: #7986cb;
+  --primary-dark: #1a237e;
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #e8e8e8;
+  --text-secondary: #b0b0b0;
+  --border: #3a3a3a;
+  --border-light: #2a2a2a;
+  --border-focus: #555555;
+  --success-light: #1b3a1e;
+  --warning-light: #4a3a10;
+  --error-light: #4a1c1c;
+  --info-light: #11343b;
+  --info: #8fd3e0;
+}
+
+#theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: white;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -617,6 +645,12 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+}
+
+#user-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 #user-status {
