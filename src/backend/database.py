@@ -33,6 +33,7 @@ def init_database():
 # Initial database if empty
 initial_activities = {
     "Chess Club": {
+        "difficulty": "Beginner",
         "description": "Learn strategies and compete in chess tournaments",
         "schedule": "Mondays and Fridays, 3:15 PM - 4:45 PM",
         "schedule_details": {
@@ -55,6 +56,7 @@ initial_activities = {
         "participants": []
     },
     "Programming Class": {
+        "difficulty": "Intermediate",
         "description": "Learn programming fundamentals and build software projects",
         "schedule": "Tuesdays and Thursdays, 7:00 AM - 8:00 AM",
         "schedule_details": {
@@ -132,6 +134,7 @@ initial_activities = {
         "participants": ["james@mergington.edu", "benjamin@mergington.edu"]
     },
     "Debate Team": {
+        "difficulty": "Advanced",
         "description": "Develop public speaking and argumentation skills",
         "schedule": "Fridays, 3:30 PM - 5:30 PM",
         "schedule_details": {

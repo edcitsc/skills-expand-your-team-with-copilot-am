@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryFilters = document.querySelectorAll(".category-filter");
   const dayFilters = document.querySelectorAll(".day-filter");
   const timeFilters = document.querySelectorAll(".time-filter");
+  const difficultyFilters = document.querySelectorAll(".difficulty-filter");
 
   // Authentication elements
   const loginButton = document.getElementById("login-button");
@@ -40,6 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchQuery = "";
   let currentDay = "";
   let currentTimeRange = "";
+  // "" = show everything, "all" = only activities with no difficulty set
+  let currentDifficulty = "";
 
   // Authentication state
   let currentUser = null;
@@ -425,6 +428,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      // Apply difficulty filter
+      if (currentDifficulty === "all" && details.difficulty) {
+        return;
+      }
+      if (
+        currentDifficulty &&
+        currentDifficulty !== "all" &&
+        details.difficulty !== currentDifficulty
+      ) {
+        return;
+      }
+
       // Apply weekend filter if selected
       if (currentTimeRange === "weekend" && details.schedule_details) {
         const activityDays = details.schedule_details.days;
@@ -625,6 +640,22 @@ document.addEventListener("DOMContentLoaded", () => {
       // Update current day filter and fetch activities
       currentDay = button.dataset.day;
       fetchActivities();
+    });
+  });
+
+  // Add event listeners for difficulty filter buttons (click again to clear)
+  difficultyFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      const wasActive = button.classList.contains("active");
+      difficultyFilters.forEach((btn) => btn.classList.remove("active"));
+
+      if (wasActive) {
+        currentDifficulty = "";
+      } else {
+        button.classList.add("active");
+        currentDifficulty = button.dataset.difficulty;
+      }
+      displayFilteredActivities();
     });
   });
 
